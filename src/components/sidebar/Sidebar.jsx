@@ -1,5 +1,5 @@
 import './Sidebar.scss';
-import Logo from './logo.png';
+import Logo from '../../assets/images/logo.png';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Sidebar = () => {
