@@ -2,7 +2,6 @@
   height: 100%;
   width: 250px;
   background-color: #fff;
-  color: #df7612;
 }
 
 .sidebar__logo-container {
@@ -20,7 +19,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 600px;
+  height: 550px;
   margin-left: 15px;
 
   .sidebar__menu-item {
@@ -33,7 +32,7 @@
 
   .sidebar__menu-item:hover {
     color: #fff;
-    background-color: #df7612;
+    background-color: #97bf0f;
     cursor: pointer;
   }
 }
@@ -48,7 +47,7 @@
 
   .sidebar__social-item:hover {
     color: #fff;
-    background-color: #df7612;
+    background-color: #97bf0f;
     cursor: pointer;
   }
 }
@@ -74,7 +73,7 @@
   .toggle-button__line {
     width: 100%;
     height: 2px;
-    background-color: #df7612;
+    background-color: #97bf0f;
     border-radius: 10px;
   }
 }
@@ -98,6 +97,4 @@
     display: flex;
     z-index: 1;
   }
-
-
 }
