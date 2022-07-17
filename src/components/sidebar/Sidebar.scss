@@ -81,6 +81,7 @@
 @media (max-width: 576px) {
   .toggle-button {
     display: flex;
+    background-color: #fff;
     z-index: 1;
   }
 
@@ -92,7 +93,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: calc(100% - 1.5rem);
     position: absolute;
+    top: 2.5rem;;
+    left: 0;
+    z-index: 1;
   }
 
   .sidebar__items-container {
