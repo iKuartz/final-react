@@ -12,15 +12,15 @@ const Login = () => {
   const [user, setUser] = useState({
     username: ''
   })
-  const loged = getSession('session')
+  const logged = getSession('session')
 
-  return loged === 'loged' ? <Navigate to="/"/> : (
+  return logged === 'logged' ? <Navigate to="/"/> : (
     <section className='log-section'>
       <div className='log-bg'>
         <Logo />
         <form className='log-form' onSubmit={(e) => {
           dispatch(setLogin(true))
-          setSession('loged')
+          setSession('logged')
           navigate('/')
           e.preventDefault()
         }}>
