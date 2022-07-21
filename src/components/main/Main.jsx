@@ -1,6 +1,8 @@
 import Carousel from 'react-multi-carousel';
 import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa';
 import 'react-multi-carousel/lib/styles.css';
+import { Navigate } from 'react-router-dom'
+import { getSession } from '../../storage/session'
 import './Main.scss';
 
 const hotels = [
@@ -39,6 +41,7 @@ const hotels = [
 ];
 
 const Main = () => {
+  const loged = getSession('session')
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -59,7 +62,7 @@ const Main = () => {
     }
   };
 
-  return (
+  return loged !== 'loged' ? <Navigate to="/login"/> : (
     <div className='main__container'>
       <h2 className='main__title'>Recommended Hotels</h2>
       <Carousel
