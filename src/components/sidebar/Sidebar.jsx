@@ -15,11 +15,7 @@ const Sidebar = () => {
   if(location.pathname !== '/login'){
     return (
       <nav>
-      <a href='/#' className='toggle-button' onClick={toggleMenu}>
-        <span className='toggle-button__line'></span>
-        <span className='toggle-button__line'></span>
-        <span className='toggle-button__line'></span>
-      </a>
+
       <div className='sidebar__container'>
           <button className='hide' onClick={(e) => {
             e.target.parentNode.classList.toggle('hidden')

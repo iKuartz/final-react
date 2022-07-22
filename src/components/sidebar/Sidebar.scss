@@ -16,7 +16,7 @@
     left: 100%;
     top: 40%;
     width: 50px;
-    aspect-ratio: 1/1;
+    height: 50px;
     border-radius: 0 100% 100% 0;
     border: none;
   }
@@ -26,9 +26,6 @@
  transform: translateX(0);
  transition-duration: 500ms;
  transition-timing-function: ease-in;
- box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
- -webkit-box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
- -moz-box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
 }
 
 .sidebar__logo-container {
@@ -113,16 +110,10 @@
   }
 
   .sidebar__container {
-    display: none;
-  }
-
-  .sidebar__container.active {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: calc(100% - 1.5rem);
+    width: 85%;
     position: absolute;
-    top: 2.5rem;
     left: 0;
     z-index: 1;
   }
