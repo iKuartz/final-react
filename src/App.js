@@ -10,19 +10,10 @@ import PrivateRoute from './routes/PrivateRoute';
 function App() {
   return (
     <BrowserRouter>
+    <Sidebar/>
       <Routes>
         <Route path='/login' element={<Login />} />
-        <Route path='/' element={<Test />} />
-        {/* <Route
-          path='/dashboard'
-          element={
-            <PrivateRoute>
-              <div className='app'>
-                <Sidebar />
-              </div>
-            </PrivateRoute>
-          }
-        /> */}
+        <Route path='/' element={<Main />} />
       </Routes>
     </BrowserRouter>
   );

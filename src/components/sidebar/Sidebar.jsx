@@ -2,7 +2,7 @@ import './Sidebar.scss';
 import Logo from '../logo/logo';
 import { setSession } from '../../storage/session';
 import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const toggleMenu = () => {
@@ -11,9 +11,10 @@ const Sidebar = () => {
   };
 
   const navigate = useNavigate()
-
-  return (
-    <>
+  const location = useLocation()
+  if(location.pathname !== '/login'){
+    return (
+      <>
       <a href='/#' className='toggle-button' onClick={toggleMenu}>
         <span className='toggle-button__line'></span>
         <span className='toggle-button__line'></span>
@@ -54,5 +55,6 @@ const Sidebar = () => {
     </>
   );
 };
+}
 
 export default Sidebar;
