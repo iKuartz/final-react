@@ -3,15 +3,12 @@ import Logo from '../logo/logo';
 import { setSession } from '../../storage/session';
 import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
 
 const Sidebar = () => {
   const toggleMenu = () => {
     const sidebar = document.querySelector('.sidebar__container');
     sidebar.classList.toggle('active');
   };
-
-  const [hidden, setHidden] = useState(true)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -26,7 +23,7 @@ const Sidebar = () => {
       <div className='sidebar__container'>
           <button className='hide' onClick={(e) => {
             e.target.parentNode.classList.toggle('hidden')
-          }}>{'>'}</button>
+          }}>Menu</button>
         <div className='sidebar__logo-container'>
           <Logo/> 
         </div>
