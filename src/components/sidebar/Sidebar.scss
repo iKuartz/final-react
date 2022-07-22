@@ -26,6 +26,9 @@
  transform: translateX(0);
  transition-duration: 500ms;
  transition-timing-function: ease-in;
+ box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
+ -webkit-box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
+ -moz-box-shadow: 3px -1px 3px 1px rgba(0, 0, 0, 0.459);
 }
 
 .sidebar__logo-container {
