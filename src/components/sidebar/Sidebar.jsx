@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
-  if(location.pathname !== '/login'){
+  if(location.pathname !== '/login' && location.pathname !== '/signup'){
     return (
       <nav>
 
