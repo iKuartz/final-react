@@ -1,0 +1,52 @@
+.main__container {
+  margin-top: 50px;
+}
+
+.main__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.hotel__container {
+  width: 200px;
+  text-align: center;
+}
+
+.hotel__container img {
+  display: block;
+  margin: auto;
+}
+
+.hotel__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.hotel__price {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.sidebar__social-container {
+  display: flex;
+  justify-content: center;
+
+  .sidebar__social-item {
+    margin: 0 5px;
+  }
+
+  .sidebar__social-item:hover {
+    color: #fff;
+    background-color: #97bf0f;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main__container {
+    display: none;
+  }
+}
