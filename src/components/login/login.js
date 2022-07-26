@@ -1,34 +1,33 @@
 import React, { useState } from 'react'
-import { setLogin } from '../../redux/login/login';
+import { getUserFromApi } from '../../redux/login/login';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setSession, getSession } from '../../storage/session';
+import { getSession } from '../../storage/session';
 import Logo from '../logo/logo';
 import './login.scss'
 
 function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const state = getSession()
+  const store = useSelector((store) => store.login)
   const [user, setUser] = useState({
     username: ''
   })
-  const logged = getSession('session')
   
   useEffect(() => {
-    if (logged){
+    if(state.token !== null){
      navigate("/")   
     }
-},[])
+},[store, ''])
   return (
       <section className='log-section'>
         <div className='log-bg'>
           <Logo />
           <form className='log-form' onSubmit={(e) => {
-            dispatch(setLogin(true))
-            setSession('logged')
-            navigate('/')
             e.preventDefault()
+            dispatch(getUserFromApi(user.username))  
           }}>
             <input type="text" placeholder='Username' value={user.username} onChange={(e) => {
               setUser({ username: e.target.value })

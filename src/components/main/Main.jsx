@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa'
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
-import { getSession } from '../../storage/session'
+import { useSelector } from 'react-redux';
 import './Main.scss';
 
 const hotels = [
@@ -42,10 +42,11 @@ const hotels = [
 ];
 
 const Main = () => {
-  const loged = getSession('session')
+  const state = useSelector((store) => store.login)
+  const logged = state.token
   const navigate = useNavigate()
   useEffect(() => {
-      if (loged !== 'logged'){
+      if (!logged){
        navigate("/login")   
       }
   },[]);

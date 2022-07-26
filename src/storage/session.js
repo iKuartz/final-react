@@ -5,5 +5,8 @@ export const setSession = (session) => {
 
 export const getSession = () => {
     const log = localStorage.getItem('session')
-    return JSON.parse(log)
+    if(log){
+        return JSON.parse(log)
+    }
+    return {token:null}
 }
