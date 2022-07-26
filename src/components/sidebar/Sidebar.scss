@@ -1,6 +1,31 @@
 .sidebar__container {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+  background-color: #fff;
+  position: fixed;
+  inset: 0 80% 0 0;
+  z-index: 10000;
+  transform: translateX(-100%);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+
+
+
+  .hide{
+    display: block;
+    position: relative;
+    left: 100%;
+    top: 40%;
+    width: 50px;
+    height: 50px;
+    border-radius: 0 100% 100% 0;
+    border: none;
+  }
+}
+
+.hidden{
+ transform: translateX(0);
+ transition-duration: 500ms;
+ transition-timing-function: ease-in;
 }
 
 .sidebar__logo-container {
@@ -85,16 +110,10 @@
   }
 
   .sidebar__container {
-    display: none;
-  }
-
-  .sidebar__container.active {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: calc(100% - 1.5rem);
+    width: 85%;
     position: absolute;
-    top: 2.5rem;
     left: 0;
     z-index: 1;
   }

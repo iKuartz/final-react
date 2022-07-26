@@ -1,6 +1,9 @@
 import Carousel from 'react-multi-carousel';
 import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa';
 import 'react-multi-carousel/lib/styles.css';
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './Main.scss';
 
 const hotels = [
@@ -39,7 +42,15 @@ const hotels = [
 ];
 
 const Main = () => {
-  const responsive = {
+  const state = useSelector((store) => store.login)
+  const logged = state.token
+  const navigate = useNavigate()
+  useEffect(() => {
+      if (!logged){
+       navigate("/login")   
+      }
+  },[]);
+    const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
@@ -59,7 +70,7 @@ const Main = () => {
     }
   };
 
-  return (
+  return(
     <div className='main__container'>
       <h2 className='main__title'>Recommended Hotels</h2>
       <Carousel
