@@ -2,6 +2,7 @@
   margin-top: 50px;
   width: 70%;
   margin: 0 auto;
+  background-color: red;
 }
 
 .main__title {
@@ -60,11 +61,5 @@
     color: #fff;
     background-color: #97bf0f;
     cursor: pointer;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .main__container {
-    display: none;
   }
 }
