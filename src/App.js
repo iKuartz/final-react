@@ -1,4 +1,3 @@
-import './App.css';
 import './App.scss';
 import Main from './components/main/Main';
 import Sidebar from './components/sidebar/Sidebar';
@@ -9,22 +8,30 @@ import { getSessionFromLocalStorage } from './redux/login/login';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-   useEffect(() => {
-   dispatch(getSessionFromLocalStorage())
-  }, [])
+  useEffect(() => {
+    dispatch(getSessionFromLocalStorage());
+  }, []);
 
   return (
     <BrowserRouter>
-    <Sidebar/>
+      <Sidebar />
       <Routes>
-      <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/hotel/:hotelId' element={<Details />} />
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Main />
+              <Route path='/hotel/:hotelId' element={<Details />} />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

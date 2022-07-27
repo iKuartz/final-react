@@ -1,7 +1,13 @@
-import Carousel from 'react-multi-carousel';
-import { FaFacebook, FaTwitter, FaInstagram, FaPinterest } from 'react-icons/fa';
-import 'react-multi-carousel/lib/styles.css';
-import { useNavigate } from 'react-router-dom'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaPinterest
+} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './Main.scss';
@@ -12,7 +18,7 @@ const hotels = [
     name: 'Papagayo Hotel',
     image_url: 'https://placehold.jp/3d4070/ffffff/150x150.png',
     description:
-      'Ideally set in the Centro district of Playa del Carmen, Papagayo Hotel Boutique is located a 3-minute walk from Playa del Carmen Beach, 458 m from Playacar Beach.',
+      'Ideally set in the Centro district of Playa del Carmen, Papagayo Hotel Boutique is located a 3-minute walk from Playa del Carmen Beach.',
     price: '$200'
   },
   {
@@ -42,45 +48,45 @@ const hotels = [
 ];
 
 const Main = () => {
-  const state = useSelector((store) => store.login)
-  const logged = state.token
-  const navigate = useNavigate()
-  useEffect(() => {
-      if (!logged){
-       navigate("/login")   
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-  },[]);
-    const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
+    ]
   };
 
-  return(
+  return (
     <div className='main__container'>
       <h2 className='main__title'>Recommended Hotels</h2>
-      <Carousel
-        className='carousel'
-        responsive={responsive}
-        infinite
-        containerClass='carousel-container'
-        dotListClass='custom-dot-list-style'
-        itemClass='carousel-item-padding-5-px'
-      >
+      <Slider {...settings}>
         {hotels.map(hotel => (
           <div className='hotel__container' key={hotel.id}>
             <div className='hotel__image-container'>
@@ -92,19 +98,19 @@ const Main = () => {
               <p className='hotel__price'>{hotel.price} per night</p>
             </div>
             <div className='sidebar__social-container'>
-          <div className='sidebar__social-item'>
-            <FaFacebook size={15} />
-          </div>
-          <div className='sidebar__social-item'>
-            <FaTwitter size={15} />
-          </div>
-          <div className='sidebar__social-item'>
-            <FaInstagram size={15} />
-          </div>
-        </div>
+              <div className='sidebar__social-item'>
+                <FaFacebook size={15} />
+              </div>
+              <div className='sidebar__social-item'>
+                <FaTwitter size={15} />
+              </div>
+              <div className='sidebar__social-item'>
+                <FaInstagram size={15} />
+              </div>
+            </div>
           </div>
         ))}
-      </Carousel>
+      </Slider>
     </div>
   );
 };
