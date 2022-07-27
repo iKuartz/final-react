@@ -4,6 +4,7 @@ import Main from './components/main/Main';
 import Sidebar from './components/sidebar/Sidebar';
 import SignUp from './components/signup/SignUp';
 import Login from './components/login/login';
+import Details from './components/details/Details';
 import { getSessionFromLocalStorage } from './redux/login/login';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -22,7 +23,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/' element={<Main />} />
+        <Route path='/hotel/:hotelId' element={<Details />} />
       </Routes>
     </BrowserRouter>
   );
