@@ -10,7 +10,7 @@ function Details(){
         <>
         <h2>Details {params.hotelId}</h2>
         <button onClick={() => {
-            dispatch(getHotelsFromApi(2,2))
+            dispatch(getHotelsFromApi(5, 0))
         }}>log</button>
         </>
     )

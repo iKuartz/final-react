@@ -12,10 +12,7 @@ export const getHotels = (payload) => ({
 
 const config = {
     headers: {
-        "Content-type":"application/json"
-    },
-    data: {},
-    params: {
+        "Content-type":"application/json",
         'token': session.token
     }
 }
