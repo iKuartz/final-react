@@ -1,14 +1,23 @@
 .main__container {
-  margin-top: 50px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
   width: 70%;
+  padding: 10px;
   margin: 0 auto;
-  background-color: red;
 }
 
 .main__title {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 20px 0;
+}
+
+.slider-container {
+  padding: 30px;
+  margin-top: 10px;
+  height: 500px;
 }
 
 .slick-slide > div {
@@ -25,7 +34,9 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 40%;
-  padding: 10px;
+  padding: 30px;
+  height: 450px;
+  margin: 20px 0;
 }
 
 .hotel__container:hover {

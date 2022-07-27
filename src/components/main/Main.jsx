@@ -110,31 +110,33 @@ const Main = () => {
   return (
     <div className='main__container'>
       <h2 className='main__title'>Recommended Hotels</h2>
-      <Slider {...settings}>
-        {hotels.map(hotel => (
-          <div className='hotel__container' key={hotel.id}>
-            <div className='hotel__image-container'>
-              <img src={hotel.image_url} alt={hotel.name} />
-            </div>
-            <div>
-              <h4 className='hotel__name'>{hotel.name}</h4>
-              <p>{hotel.description}</p>
-              <p className='hotel__price'>{hotel.price} per night</p>
-            </div>
-            <div className='sidebar__social-container'>
-              <div className='sidebar__social-item'>
-                <FaFacebook size={15} />
+      <div className='slider-container'>
+        <Slider {...settings}>
+          {hotels.map(hotel => (
+            <div className='hotel__container' key={hotel.id}>
+              <div className='hotel__image-container'>
+                <img src={hotel.image_url} alt={hotel.name} />
               </div>
-              <div className='sidebar__social-item'>
-                <FaTwitter size={15} />
+              <div>
+                <h4 className='hotel__name'>{hotel.name}</h4>
+                <p>{hotel.description}</p>
+                <p className='hotel__price'>{hotel.price} per night</p>
               </div>
-              <div className='sidebar__social-item'>
-                <FaInstagram size={15} />
+              <div className='sidebar__social-container'>
+                <div className='sidebar__social-item'>
+                  <FaFacebook size={15} />
+                </div>
+                <div className='sidebar__social-item'>
+                  <FaTwitter size={15} />
+                </div>
+                <div className='sidebar__social-item'>
+                  <FaInstagram size={15} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
