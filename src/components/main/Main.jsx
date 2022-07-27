@@ -83,8 +83,8 @@ const Main = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true
         }
@@ -119,7 +119,7 @@ const Main = () => {
               </div>
               <div>
                 <h4 className='hotel__name'>{hotel.name}</h4>
-                <p>{hotel.description}</p>
+                <p className='hotel__description'>{hotel.description}</p>
                 <p className='hotel__price'>{hotel.price} per night</p>
               </div>
               <div className='sidebar__social-container'>
