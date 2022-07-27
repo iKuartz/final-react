@@ -23,12 +23,12 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/hotel/:hotelId' element={<Details />} />
         <Route
           path='/'
           element={
             <PrivateRoute>
               <Main />
-              <Route path='/hotel/:hotelId' element={<Details />} />
             </PrivateRoute>
           }
         />
