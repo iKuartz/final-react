@@ -47,6 +47,28 @@ const hotels = [
   }
 ];
 
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: '#97bf0f' }}
+      onClick={onClick}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', background: '#97bf0f' }}
+      onClick={onClick}
+    />
+  );
+}
+
 const Main = () => {
   const settings = {
     dots: true,
@@ -54,6 +76,8 @@ const Main = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     initialSlide: 0,
     responsive: [
       {
