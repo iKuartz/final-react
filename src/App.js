@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
+import AddReservation from './components/reservations/AddReservation';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/hotel/:hotelId' element={<Details />} />
+        <Route path='/add-reservation' element={<AddReservation />} />
         <Route
           path='/'
           element={
