@@ -35,6 +35,18 @@ const AddReservation = () => {
             </select>
           </div>
           <div className='mb-3'>
+            <label htmlFor='rooms' className='form-label'>
+              Rooms:{' '}
+            </label>
+            <input
+              id='rooms'
+              className='form-control'
+              name='rooms'
+              type='number'
+              min='1'
+            />
+          </div>
+          <div className='mb-3'>
             <label htmlFor='startDateContent' className='form-label'>
               Start Date:{' '}
             </label>
