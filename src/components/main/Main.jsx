@@ -38,14 +38,13 @@ const Main = () => {
   const state = useSelector(store => store.hotels);
 
   useEffect(() => {
-    dispatch(getHotelsFromApi(5, 0));
     if (session.token === null) {
       navigate('/login');
     }
-  }, [dispatch, navigate, session.token]);
+    dispatch(getHotelsFromApi(5, 0));
+  }, [dispatch, navigate]);
 
   const hotels = state.data;
-  console.log(hotels);
 
   const settings = {
     dots: true,
