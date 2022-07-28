@@ -30,7 +30,7 @@ function Details(){
         return(
             <section className="details-section">
           <div className="image-details">
-            <img src={image_path || bg}/>
+            <img src={bg}/>
           </div>
           <div className="options-details">
             <div className="header-details">
