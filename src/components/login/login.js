@@ -20,7 +20,7 @@ function Login() {
     if(state.token !== null){
      navigate("/")   
     }
-},[store, ''])
+},[store, '', state])
   return (
       <section className='log-section'>
         <div className='log-bg'>
