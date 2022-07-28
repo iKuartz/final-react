@@ -1,13 +1,8 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaPinterest
-} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Main.scss';
@@ -47,10 +42,10 @@ const Main = () => {
     if (session.token === null) {
       navigate('/login');
     }
-  }, []);
+  }, [dispatch, navigate, session.token]);
 
   const hotels = state.data;
-  console.log('HOTELS: ', hotels);
+  console.log(hotels);
 
   const settings = {
     dots: true,
@@ -97,7 +92,9 @@ const Main = () => {
           {hotels.map(hotel => (
             <div className='hotel__container' key={hotel.id}>
               <div className='hotel__image-container'>
-                <img src={hotel.image_path} alt={hotel.name} />
+                <Link to={`/hotel/${hotel.id}`}>
+                  <img src={hotel.image_path} alt={hotel.name} />
+                </Link>
               </div>
               <div>
                 <h4 className='hotel__name'>{hotel.name}</h4>
