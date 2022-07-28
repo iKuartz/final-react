@@ -1,5 +1,5 @@
 import React from "react";
-import Error from "../error/error";
+import Error from "../extras/error/error";
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react";
 import { getSession } from '../../storage/session';
