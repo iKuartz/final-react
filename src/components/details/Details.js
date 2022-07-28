@@ -31,11 +31,16 @@ function Details(){
           <div className="options-details">
             <div className="header-details">
                 <h2>{name}</h2>
-                <p>{`${address.city}, ${address.country}. zone: ${address.neighbourhood}`}</p>
+                <p>{`${address.city}, ${address.country}. zone: ${address.neighbourhood}. ${feature.room} rooms`}</p>
             </div>
-            <div>
-               <Sign bool={false}/>
-            </div>
+            <ul>
+                <li> pool {<Sign bool={feature.pool}/>}</li>
+                <li> air conditioning {<Sign bool={feature.air_conditioning}/>}</li>
+                <li> bar {<Sign bool={feature.bar}/>}</li>
+                <li> gym {<Sign bool={feature.gym}/>}</li>
+                <li> tv {<Sign bool={feature.tv}/>}</li>
+            </ul>
+             <a src="/">See more hotels</a>
           </div>
         </section>
     )
