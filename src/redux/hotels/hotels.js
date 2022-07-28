@@ -19,7 +19,7 @@ const config = {
 
 export const getHotelsFromApi = (amount, index) => (dispatch) => {
     
-     axios.get(`http://localhost:3000/v1/hotels?limit=${amount}&offset=${index}`, config)
+     axios.get(`http://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, config)
     .then((data) => dispatch(getHotels(data.data)))
     .catch((error) => console.log(error))
 }
