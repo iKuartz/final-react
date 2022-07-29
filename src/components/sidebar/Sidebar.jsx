@@ -24,7 +24,7 @@ const Sidebar = () => {
           <Logo/> 
         </div>
         <ul className='sidebar__items-container'>
-          <li className='sidebar__menu-item'>Add Hotel</li>
+          <li className='sidebar__menu-item' onClick={() => navigate('/addHotel')}>Add Hotel</li>
           <li className='sidebar__menu-item'>Delete Hotel</li>
           <li className='sidebar__menu-item'>Reserve Hotel</li>
           <li className='sidebar__menu-item'>My Reservations</li>
