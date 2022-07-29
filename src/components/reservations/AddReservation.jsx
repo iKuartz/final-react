@@ -1,21 +1,44 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getHotelsFromApi } from '../../redux/hotels/hotels';
+import { getSession } from '../../storage/session';
 import './reservations.scss';
 
 const AddReservation = () => {
+  const dispatch = useDispatch();
   const state = useSelector(store => store.hotels);
+  const [hotelId, setHotelId] = useState('');
+  const [rooms, setRooms] = useState('1');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [userId, setUserId] = useState('');
+  const session = getSession();
+  const navigate = useNavigate();
   let hotelList = [];
+
+  useEffect(() => {
+    if (session.token === null) {
+      navigate('/login');
+    }
+    dispatch(getHotelsFromApi(5, 0));
+  }, [dispatch, navigate]);
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+    console.log('FORM DATA:')
+    console.log(hotelId);
+    console.log(rooms);
+    console.log(startDate);
+    console.log(endDate);
   };
 
   if (state.data) {
     const hotels = state.data;
 
-    hotelList = hotels.map(house => (
-      <option key={house.id} value={house.id}>
-        {house.name}
+    hotelList = hotels.map(hotel => (
+      <option key={hotel.id} value={hotel.id}>
+        {hotel.name}
       </option>
     ));
   }
@@ -29,7 +52,13 @@ const AddReservation = () => {
             <label htmlFor='nameContent' className='form-label'>
               Hotel:
             </label>
-            <select id='nameContent' name='nameContent' className='form-select'>
+            <select
+              id='nameContent'
+              name='nameContent'
+              className='form-select'
+              value={hotelId}
+              onChange={e => setHotelId(e.target.value)}
+            >
               <option value=''> - Select Hotel - </option>
               {hotelList}
             </select>
@@ -44,6 +73,8 @@ const AddReservation = () => {
               name='rooms'
               type='number'
               min='1'
+              value={rooms}
+              onChange={e => setRooms(e.target.value)}
             />
           </div>
           <div className='mb-3'>
@@ -55,6 +86,8 @@ const AddReservation = () => {
               className='form-control'
               name='startDateContent'
               type='date'
+              value={startDate}
+              onChange={e => setStartDate(e.target.value)}
             />
           </div>
           <div className='mb-3'>
@@ -66,6 +99,8 @@ const AddReservation = () => {
               className='form-control'
               name='endDateContent'
               type='date'
+              value={endDate}
+              onChange={e => setEndDate(e.target.value)}
             />
           </div>
           <button
