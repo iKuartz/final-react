@@ -4,6 +4,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import SignUp from './components/signup/SignUp';
 import Login from './components/login/login';
 import Details from './components/details/Details';
+import AddHotel from './components/addHotel/AddHotel';
 import { getSessionFromLocalStorage } from './redux/login/login';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -20,10 +21,13 @@ function App() {
     <BrowserRouter>
       <Sidebar />
       <Routes>
-        <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/hotel/:hotelId' element={<Details />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/' element={<Main />} />
+        <Route path='/hotel/:hotelId' element={<Details />} />
+        <Route path='/addHotel' element={<AddHotel />} />
+
+
 
       </Routes>
     </BrowserRouter>
