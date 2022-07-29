@@ -30,7 +30,9 @@ const Sidebar = () => {
             Menu
           </button>
           <div className='sidebar__logo-container'>
-            <Logo />
+            <Link to='/'>
+              <Logo />
+            </Link>
           </div>
           <ul className='sidebar__items-container'>
             <li className='sidebar__menu-item'>Add Hotel</li>
