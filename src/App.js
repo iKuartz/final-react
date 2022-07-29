@@ -26,9 +26,6 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/hotel/:hotelId' element={<Details />} />
         <Route path='/addHotel' element={<AddHotel />} />
-
-
-
       </Routes>
     </BrowserRouter>
   );
