@@ -11,50 +11,49 @@ const session = getSession();
 const config = {
   headers: {
     'Content-type': 'application/json',
-    token: session.token
-  }
+    token: session.token,
+  },
 };
 
 // action creatorS
-export const getReservations = () => async dispatch => {
+export const getReservations = () => async (dispatch) => {
   const response = await axios
     .get(`${URL}/reservation`, config)
-    .then(res => res.data);
+    .then((res) => res.data);
   dispatch({
     type: GET_RESERVATIONS,
-    payload: response
+    payload: response,
   });
 };
 
-export const newReservations =
-  (rooms, hotelId, startDate, endDate) => async (dispatch) => {
-    const data = {
-      reservation: {
-        reserved_rooms: rooms,
-        hotel_id: hotelId,
-        start_date: startDate,
-        end_date: endDate
-      }
-    };
-
-    const response = await axios
-      .post(`${URL}/reservation`, data, config)
-      .then(res => res.data);
-
-    dispatch({
-      type: NEW_RESERVATION,
-      payload: response
-    });
+export const newReservations = (rooms, hotelId, startDate, endDate) => async (dispatch) => {
+  const data = {
+    reservation: {
+      reserved_rooms: rooms,
+      hotel_id: hotelId,
+      start_date: startDate,
+      end_date: endDate,
+    },
   };
 
-export const delReservations = id => async dispatch => {
+  const response = await axios
+    .post(`${URL}/reservation`, data, config)
+    .then((res) => res.data);
+
+  dispatch({
+    type: NEW_RESERVATION,
+    payload: response,
+  });
+};
+
+export const delReservations = (id) => async (dispatch) => {
   const response = await axios
     .delete(`${URL}/reservation/${id}`, config)
-    .then(res => res.data);
+    .then((res) => res.data);
 
   dispatch({
     type: DEL_RESERVATION,
-    payload: response
+    payload: response,
   });
 };
 

@@ -10,7 +10,7 @@ const store = configureStore({
     hotels: hotelsReducer,
     reservations: reservationsReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export default store;

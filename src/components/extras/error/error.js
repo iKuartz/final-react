@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function Error({message}){
-    return(
-      <p>{message || ''}</p>
-    )
+// eslint-disable-next-line react/prop-types
+function Error({ message }) {
+  return (
+    <p>{message || ''}</p>
+  );
 }
 
-export default Error
+export default Error;
