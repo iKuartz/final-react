@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 
 function AddHotel() {
+
   const [values, setValues] = useState({
-    "room": true,
+    "room": 0,
     'pool': false,
     'bar': false,
     'air_conditioning': false,
@@ -15,17 +16,18 @@ function AddHotel() {
     'neighbourhood': '',
     'street': '',
     'number': 0,
+    'complement': '',
     'name': '',
-    'description': ''
+    'description': '',
+    'image': null,
   })
-  const form = new FormData();
 
   return (
     <section>
-      <form>
+      <form id="form-data">
         <div className='checkbox'>
           <label htmlFor="pool" >Pool</label>
-          <input type="checkbox" name="pool" value={values['pool']} onChange={(e) => {
+          <input type="checkbox"  name="pool" value={values['pool']} onChange={(e) => {
             setValues({ ...values, 'pool': e.target.checked })
           }} />
         </div>
@@ -102,7 +104,7 @@ function AddHotel() {
         </div>
 
         <div className='checkbox'>
-          <label htmlFor="number" >Pool</label>
+          <label htmlFor="number" >Number</label>
           <input type="number" name="number" value={values['number']} onChange={(e) => {
             setValues({ ...values, 'number': e.target.value })
           }} />
@@ -115,14 +117,36 @@ function AddHotel() {
           }} />
         </div>
 
+        <div className='checkbox'>
+          <label htmlFor="room" >Room </label>
+          <input type="number" name="room" value={values['room']} onChange={(e) => {
+            setValues({ ...values, 'room': e.target.value })
+          }} />
+        </div>
+
+        <div className='checkbox'>
+          <label htmlFor="complement" >Complement </label>
+          <input type="complement" name="complement" value={values['complement']} onChange={(e) => {
+            setValues({ ...values, 'complement': e.target.value })
+          }} />
+        </div>
+
+        <div className='checkbox'>
+          <label htmlFor="image" >Image </label>
+          <input type="file" accept="image/*" name="image" onChange={(e) => {
+            setValues({ ...values, 'image': e.target.files[0] })
+          }} />
+        </div>
 
       </form>
 
-      {/* <button onClick={() => {
-        form.append('air', values['air'])
-        form.append('tv', values['tv'])
-      }}>submit</button> */}
-      <button onClick={() => console.log(values)}>log</button>
+      <button onClick={() => {
+        const formData = new FormData()
+
+        for(const prop in values){
+          formData.append(prop, values[prop])
+        }
+}}>submit</button>
 
     </section>
   )
