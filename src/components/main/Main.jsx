@@ -41,7 +41,7 @@ const Main = () => {
     if (session.token === null) {
       navigate('/login');
     }
-    dispatch(getHotelsFromApi(5, 0));
+    dispatch(getHotelsFromApi(10, 0));
   }, [dispatch, navigate]);
 
   const settings = {
