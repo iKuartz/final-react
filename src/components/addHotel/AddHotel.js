@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postHotelToApi } from '../../redux/hotels/hotels';
 import './addHotel.scss'
 
 function AddHotel() {
+  const navigate = useNavigate()
 
   const [values, setValues] = useState({
     "room": 0,
@@ -26,7 +28,7 @@ function AddHotel() {
 
   return (
     <section className='form-section'>
-      <form id="form-data">
+      <form id="form-data" onSubmit={(e) => e.preventDefault()}>
 
         <div className='section-form'>
           <h2>Location</h2>
@@ -159,6 +161,7 @@ function AddHotel() {
             formData.append(`hotel[${prop}]`, values[prop])
           }
           postHotelToApi(formData)
+          navigate('/')
         }}>submit</button>
 
 
