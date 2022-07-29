@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+
+.form-section{
+    background: url(../../assets/images/form-bg-big.jpg) no-repeat center center;
+    background-size: 100% 100%;
+
+    #form-data{
+        background-color: $primary-translucid;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 0;
+    
+        .checkbox{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+    
+        .inverse{
+            flex-direction: row-reverse;
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+}
+@media only screen and (max-width : 900px) {
+    .form-section{
+        background: url(../../assets/images/form-bg.jpg) no-repeat center center;
+        background-size: 100% 100%;
+    }
+}
+
