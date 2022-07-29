@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { postHotelToApi } from '../../redux/hotels/hotels';
 
 function AddHotel() {
 
@@ -144,8 +145,9 @@ function AddHotel() {
         const formData = new FormData()
 
         for(const prop in values){
-          formData.append(prop, values[prop])
+          formData.append(`hotel[${prop}]`, values[prop])
         }
+        postHotelToApi(formData)
 }}>submit</button>
 
     </section>
