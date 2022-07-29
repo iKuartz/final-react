@@ -8,9 +8,9 @@ import { getSessionFromLocalStorage } from './redux/login/login';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PrivateRoute from './routes/PrivateRoute';
 import AddReservation from './components/reservations/AddReservation';
 import Reservations from './components/reservations/Reservations';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,14 +28,7 @@ function App() {
         <Route path='/hotel/:hotelId' element={<Details />} />
         <Route path='/add-reservation' element={<AddReservation />} />
         <Route path='/reservations' element={<Reservations />} />
-        <Route
-          path='/'
-          element={
-            <PrivateRoute>
-              <Main />
-            </PrivateRoute>
-          }
-        />
+        <Route path='/' element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
