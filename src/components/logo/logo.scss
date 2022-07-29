@@ -1,15 +1,17 @@
 @import '../../variables.scss';
 
-.logo{
-    display: flex;
-    h1{
-        color: $dark-gray;
-        font-size: 50px;
-        font-weight: bold;
-        user-select: none;
-    }
-    img{
-        width: 60px;
-        aspect-ratio: 1/1;
-    }
+.logo {
+  display: flex;
+
+  h1 {
+    color: $dark-gray;
+    font-size: 50px;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  img {
+    width: 60px;
+    aspect-ratio: 1/1;
+  }
 }

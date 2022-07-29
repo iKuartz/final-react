@@ -1,36 +1,36 @@
 @import '../../variables.scss';
 
-.signup-section{
+.signup-section {
+  width: 100%;
+  height: 100vh;
+  background: url(../../assets/images/bg-su.jpg) no-repeat center center;
+
+  .signup-bg {
+    background-color: $primary-translucid;
     width: 100%;
-    height: 100vh;
-    background: url(../../assets/images/bg-su.jpg) no-repeat center center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    .signup-bg{
-      background-color: $primary-translucid;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      .logo{
-        margin-top: 10%;
-      }
+    .logo {
+      margin-top: 10%;
     }
+  }
 }
 
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width: 900px) {
+  .signup-bg {
+    align-items: center;
+    padding-top: 100px;
 
-    .signup-bg{
-      align-items: center;
-      padding-top: 100px;
-      .logo{
-        margin-bottom: 100px;
-      }
-
-      .log-form{
-        margin-top: 0;
-      }
+    .logo {
+      margin-bottom: 100px;
     }
+
+    .log-form {
+      margin-top: 0;
+    }
+  }
 }

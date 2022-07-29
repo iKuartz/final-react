@@ -1,14 +1,14 @@
 import './App.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { getSessionFromLocalStorage } from './redux/login/login';
 import Main from './components/main/Main';
 import Sidebar from './components/sidebar/Sidebar';
 import SignUp from './components/signup/SignUp';
 import Login from './components/login/login';
 import Details from './components/details/Details';
 import AddHotel from './components/addHotel/AddHotel';
-import { getSessionFromLocalStorage } from './redux/login/login';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();

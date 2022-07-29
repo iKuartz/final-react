@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-function Error({message}){
-    return(
+function Error({ message }) {
+  return (
       <p>{message || ''}</p>
-    )
+  );
 }
 
-export default Error
+export default Error;
