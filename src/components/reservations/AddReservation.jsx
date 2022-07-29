@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getHotelsFromApi } from '../../redux/hotels/hotels';
+import { newReservations } from '../../redux/reservations/reservations';
 import { getSession } from '../../storage/session';
 import './reservations.scss';
 
@@ -12,7 +13,6 @@ const AddReservation = () => {
   const [rooms, setRooms] = useState('1');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [userId, setUserId] = useState('');
   const session = getSession();
   const navigate = useNavigate();
   let hotelList = [];
@@ -26,11 +26,9 @@ const AddReservation = () => {
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    console.log('FORM DATA:')
-    console.log(hotelId);
-    console.log(rooms);
-    console.log(startDate);
-    console.log(endDate);
+    dispatch(newReservations(rooms, hotelId, startDate, endDate)).then(() => {
+      navigate('/reservations');
+    });
   };
 
   if (state.data) {
@@ -47,7 +45,7 @@ const AddReservation = () => {
     <div className='center-vertical'>
       <div className='container'>
         <h2>Add Reservation</h2>
-        <form>
+        <form onSubmit={handleOnSubmit}>
           <div className='mb-3'>
             <label htmlFor='nameContent' className='form-label'>
               Hotel:
@@ -58,6 +56,7 @@ const AddReservation = () => {
               className='form-select'
               value={hotelId}
               onChange={e => setHotelId(e.target.value)}
+              required
             >
               <option value=''> - Select Hotel - </option>
               {hotelList}
@@ -75,6 +74,7 @@ const AddReservation = () => {
               min='1'
               value={rooms}
               onChange={e => setRooms(e.target.value)}
+              required
             />
           </div>
           <div className='mb-3'>
@@ -88,6 +88,7 @@ const AddReservation = () => {
               type='date'
               value={startDate}
               onChange={e => setStartDate(e.target.value)}
+              required
             />
           </div>
           <div className='mb-3'>
@@ -101,13 +102,10 @@ const AddReservation = () => {
               type='date'
               value={endDate}
               onChange={e => setEndDate(e.target.value)}
+              required
             />
           </div>
-          <button
-            type='submit'
-            className='btn btn-primary'
-            onClick={handleOnSubmit}
-          >
+          <button type='submit' className='btn btn-primary'>
             Reserve
           </button>
         </form>
