@@ -40,11 +40,13 @@ const Sidebar = () => {
             <li className='sidebar__menu-item'>
               <Link to='/add-reservation'>Add Reservation</Link>
             </li>
-            <li className='sidebar__menu-item'>My Reservations</li>
+            <li className='sidebar__menu-item'>
+              <Link to='/reservations'>My Reservations</Link>
+            </li>
             <li
               className='sidebar__menu-item'
               onClick={() => {
-                setSession('');
+                localStorage.removeItem('session');
                 navigate('/login');
               }}
             >
