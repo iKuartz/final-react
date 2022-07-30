@@ -32,7 +32,7 @@ function Details() {
     return (
       <section className="details-section">
         <div className="image-details">
-          <img src={image_path || bg} />
+          <img alt="hotel" src={image_path || bg} />
         </div>
         <div className="options-details">
           <div className="header-details">
@@ -71,7 +71,7 @@ function Details() {
             Discover more hotels
             <span>{'>'}</span>
           </a>
-          <button className="cta">
+          <button type="button" className="cta">
             Reserve
             <FontAwesomeIcon icon={faCircleChevronRight} className="fa-thin" />
           </button>

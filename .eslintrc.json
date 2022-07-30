@@ -20,7 +20,12 @@
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "no-restricted-syntax": "off",
-    "guard-for-in": "off"
+    "guard-for-in": "off",
+    "camelcase": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "ignorePatterns": [
     "dist/",

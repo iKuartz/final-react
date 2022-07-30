@@ -43,7 +43,7 @@ function Login() {
 
           <button disabled={user.username.length < 4} type="submit">Login</button>
           <p>
-            Don't have an accoount?
+            Don&apos;t have an accoount?
             <a href="/signup">Sign up</a>
           </p>
         </form>
