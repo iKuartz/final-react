@@ -20,7 +20,7 @@ const config2 = {
 };
 
 export const postHotelToApi = (obj) => {
-  axios.post('http://rails-hotels-api.herokuapp.com/v1/hotels', obj, config2);
+  axios.post('https://rails-hotels-api.herokuapp.com/v1/hotels', obj, config2);
 };
 
 export const getHotels = (payload) => ({
@@ -36,7 +36,7 @@ const config = {
 };
 
 export const getHotelsFromApi = (amount, index) => (dispatch) => {
-  axios.get(`http://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, config)
+  axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, config)
     .then((data) => dispatch(getHotels(data.data)));
 };
 
