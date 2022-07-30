@@ -14,7 +14,7 @@ function Reservations() {
   const navigate = useNavigate();
   const state = useSelector((store) => store.reservations, shallowEqual);
   const hotelsData = useSelector((store) => store.hotels);
-  const [reservations] = state.reservations;
+  const { reservations } = state;
   let hotels = [];
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Reservations() {
       navigate('/login');
     }
     dispatch(getReservations());
-    dispatch(getHotelsFromApi(10, 0));
+    dispatch(getHotelsFromApi(10, 0, session.token));
   }, []);
 
   if (state.reservations && hotelsData.data) {
@@ -70,6 +70,21 @@ function Reservations() {
       </div>
     );
   }
+  return (
+    <div className="main__container">
+      <h2 className="main__title">My Reservations</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Hotel</th>
+            <th scope="col">Rooms</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  );
 }
 
 export default Reservations;

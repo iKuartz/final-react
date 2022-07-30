@@ -21,7 +21,7 @@ const AddReservation = () => {
     if (session.token === null) {
       navigate('/login');
     }
-    dispatch(getHotelsFromApi(5, 0));
+    dispatch(getHotelsFromApi(5, 0, session.token));
   }, [dispatch, navigate]);
 
   const handleOnSubmit = (e) => {
