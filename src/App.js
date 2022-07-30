@@ -9,6 +9,8 @@ import SignUp from './components/signup/SignUp';
 import Login from './components/login/login';
 import Details from './components/details/Details';
 import AddHotel from './components/addHotel/AddHotel';
+import AddReservation from './components/reservations/AddReservation';
+import Reservations from './components/reservations/Reservations';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,8 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/hotel/:hotelId' element={<Details />} />
         <Route path='/addHotel' element={<AddHotel />} />
+        <Route path="/add-reservation" element={<AddReservation />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </BrowserRouter>
   );

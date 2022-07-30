@@ -15,7 +15,11 @@ export const setUser = (payload) => ({
 });
 
 export const postUserToApi = (name) => async (dispatch) => {
+<<<<<<< HEAD
   fetch('http://rails-hotels-api.herokuapp.com/v1/register', {
+=======
+  fetch('https://rails-hotels-api.herokuapp.com/v1/register', {
+>>>>>>> development
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +44,12 @@ export const getSessionFromLocalStorage = () => (dispatch) => {
 };
 
 export const getUserFromApi = (name) => async (dispatch) => {
+<<<<<<< HEAD
   fetch(`http://rails-hotels-api.herokuapp.com/v1/login/${name}`)
+=======
+  fetch(`https://rails-hotels-api.herokuapp.com/v1/login/${name}`)
+
+>>>>>>> development
     .then((response) => response.json())
     .then((data) => {
       setSession({ token: data.token, user: name });
@@ -53,12 +62,23 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGIN: {
       return { ...action.payload };
+<<<<<<< HEAD
     }
     case SET_USER: {
       return { ...action.payload };
     }
+=======
+    }
+    case SET_USER: {
+      return { ...action.payload };
+    }
+>>>>>>> development
     default:
       return state;
   }
 };
+<<<<<<< HEAD
 export default reducer;
+=======
+export default reducer;
+>>>>>>> development
