@@ -17,10 +17,10 @@ function Details() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getHotelsFromApi(100, 0));
     if (session.token === null) {
       navigate('/login');
     }
+    dispatch(getHotelsFromApi(100, 0, session.token));
   }, []);
 
   if (state.data) {
