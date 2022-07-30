@@ -37,13 +37,6 @@ const Main = () => {
   const navigate = useNavigate();
   const state = useSelector((store) => store.hotels);
 
-  useEffect(() => {
-    if (session.token === null) {
-      navigate('/login');
-    }
-    dispatch(getHotelsFromApi(20, 0));
-  }, [dispatch, navigate]);
-
   const settings = {
     dots: true,
     infinite: false,
@@ -80,6 +73,13 @@ const Main = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    if (session.token === null) {
+      navigate('/login');
+    }
+    dispatch(getHotelsFromApi(100, 0, session.token));
+  }, []);
 
   if (state.data) {
     const hotels = state.data;

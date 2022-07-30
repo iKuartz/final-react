@@ -28,15 +28,13 @@ export const getHotels = (payload) => ({
   payload,
 });
 
-const config = {
-  headers: {
-    'Content-type': 'application/json',
-    token: session.token,
-  },
-};
-
-export const getHotelsFromApi = (amount, index) => (dispatch) => {
-  axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, config)
+export const getHotelsFromApi = (amount, index, token) => (dispatch) => {
+  axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, {
+    headers: {
+      'Content-type': 'application/json',
+      token,
+    },
+  })
     .then((data) => dispatch(getHotels(data.data)));
 };
 
