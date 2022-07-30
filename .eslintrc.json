@@ -16,7 +16,9 @@
     "eol-last": "off",
     "react/jsx-uses-react": "error",   
     "react/jsx-uses-vars": "error" ,
-    "camelcase": "off"
+    "camelcase": "off",
+    "no-restricted-syntax": "off",
+    "guard-for-in": "off"
   },
   "plugins": ["react"],
   "ignorePatterns": [
