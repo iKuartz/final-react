@@ -32,11 +32,10 @@ export const getHotelsFromApi = (amount, index, token) => (dispatch) => {
   axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, {
     headers: {
       'Content-type': 'application/json',
-      token: token,
+      token,
     },
   })
     .then((data) => dispatch(getHotels(data.data)));
-    console.log(session.token)
 };
 
 const reducer = (state = initialState, action) => {
