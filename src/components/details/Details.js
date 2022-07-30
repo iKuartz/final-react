@@ -1,23 +1,20 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { getSession } from '../../storage/session';
-import { getHotelsFromApi } from '../../redux/hotels/hotels';
 import bg from '../../assets/images/bg-su.jpg';
 import Sign from '../extras/sign/sign';
 import './details.scss';
 
 function Details() {
   const params = useParams();
-  const dispatch = useDispatch();
   const state = useSelector((store) => store.hotels);
   const session = getSession();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getHotelsFromApi(5, 0));
     if (session.token === null) {
       navigate('/login');
     }
