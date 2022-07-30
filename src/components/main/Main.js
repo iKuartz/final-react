@@ -78,7 +78,7 @@ const Main = () => {
     if (session.token === null) {
       navigate('/login');
     }
-      dispatch(getHotelsFromApi(100, 0, session.token));    
+    dispatch(getHotelsFromApi(100, 0, session.token));
   }, []);
 
   if (state.data) {
