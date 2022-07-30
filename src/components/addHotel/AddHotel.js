@@ -25,95 +25,35 @@ function AddHotel() {
     image: null,
   });
 
+  const attributes = [ "country", "state", "city", "neighborhood", "street", "complement" ];
+  const amenities = [ "pool", "bar", "air_conditioning", "tv", "gym" ];
+
   return (
     <section className="form-section">
       <form id="form-data" onSubmit={(e) => e.preventDefault()}>
 
         <div className="section-form">
           <h2>Location</h2>
-
           <div className="checkbox">
-            <label htmlFor="Country">
-              Country
-              <input
-                id="Country"
-                type="text"
-                name="country"
-                value={values.country}
-                onChange={(e) => {
-                  setValues({ ...values, country: e.target.value });
-                }}
-              />
-            </label>
-
+            {attributes.map((attribute) => (
+              <label htmlFor={attribute} key={attribute}>
+                {attribute}
+                <input
+                  id={attribute}
+                  type="text"
+                  name={attribute}
+                  value={values[attribute]}
+                  onChange={(e) => {
+                    setValues({ ...values, [attribute]: e.target.value });
+                  }
+                  }
+                />
+              </label>
+            ))}
           </div>
-
-          <div className="checkbox">
-            <label htmlFor="state">
-              State
-              <input
-                id="state"
-                type="text"
-                name="state"
-                value={values.state}
-                onChange={(e) => {
-                  setValues({ ...values, state: e.target.value });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox">
-            <label htmlFor="city">
-              City
-              <input
-                id="city"
-                type="text"
-                name="city"
-                value={values.city}
-                onChange={(e) => {
-                  setValues({ ...values, city: e.target.value });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox">
-            <label htmlFor="neighbourhood">
-              Neighbourhood
-              <input
-                id="neighbourhood"
-                type="text"
-                name="neighbourhood"
-                value={values.neighbourhood}
-                onChange={(e) => {
-                  setValues({ ...values, neighbourhood: e.target.value });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox">
-            <label htmlFor="street">
-              Street
-              <input
-                type="text"
-                name="street"
-                value={values.street}
-                onChange={(e) => {
-                  setValues({ ...values, street: e.target.value });
-                }}
-              />
-            </label>
-
-          </div>
-
           <div className="checkbox">
             <label htmlFor="number">
-              Number
+              number
               <input
                 type="number"
                 name="number"
@@ -123,22 +63,6 @@ function AddHotel() {
                 }}
               />
             </label>
-
-          </div>
-
-          <div className="checkbox">
-            <label htmlFor="complement">
-              Complement
-              <input
-                type="complement"
-                name="complement"
-                value={values.complement}
-                onChange={(e) => {
-                  setValues({ ...values, complement: e.target.value });
-                }}
-              />
-            </label>
-
           </div>
         </div>
 
@@ -205,81 +129,23 @@ function AddHotel() {
 
           </div>
 
-          <div className="checkbox inverse">
-            <label htmlFor="pool">
-              Pool
-              <input
-                type="checkbox"
-                name="pool"
-                value={values.pool}
-                onChange={(e) => {
-                  setValues({ ...values, pool: e.target.checked });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox inverse">
-            <label htmlFor="bar">
-              Bar
-              <input
-                type="checkbox"
-                name="bar"
-                value={values.bar}
-                onChange={(e) => {
-                  setValues({ ...values, bar: e.target.checked });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox inverse">
-            <label htmlFor="air_conditioning">
-              Air conditioning
-              <input
-                type="checkbox"
-                name="air_conditioning"
-                value={values.air_conditioning}
-                onChange={(e) => {
-                  setValues({ ...values, air_conditioning: e.target.checked });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox inverse">
-            <label htmlFor="tv">
-              Tv
-              <input
-                type="checkbox"
-                name="tv"
-                value={values.tv}
-                onChange={(e) => {
-                  setValues({ ...values, tv: e.target.checked });
-                }}
-              />
-            </label>
-
-          </div>
-
-          <div className="checkbox inverse">
-            <label htmlFor="gym">
-              Gym
-              <input
-                type="checkbox"
-                name="gym"
-                value={values.gym}
-                onChange={(e) => {
-                  setValues({ ...values, gym: e.target.checked });
-                }}
-              />
-            </label>
-
-          </div>
-
+          {amenities.map((amenity) => (
+            <div className="checkbox" key={amenity}>
+              <label htmlFor={amenity}>
+                <input
+                  id={amenity}
+                  type="checkbox"
+                  name={amenity}
+                  checked={values[amenity]}
+                  onChange={(e) => {
+                    setValues({ ...values, [amenity]: e.target.checked });
+                  }
+                  }
+                />
+                {amenity}
+              </label>
+            </div>
+          ))}
         </div>
 
         <button
