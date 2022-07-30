@@ -29,6 +29,8 @@ function Details() {
       address, description, feature, image_path, name,
     } = data;
 
+    const amenities = ["pool", "air_conditioning", "bar", "gym", "tv"];
+
     return (
       <section className="details-section">
         <div className="image-details">
@@ -40,31 +42,12 @@ function Details() {
             <p>{`${address.city}, ${address.country}. zone: ${address.neighbourhood}. ${feature.room} rooms`}</p>
           </div>
           <ul>
-            <li>
-              {' '}
-              pool
-              <Sign bool={feature.pool} />
-            </li>
-            <li>
-              {' '}
-              air conditioning
-              <Sign bool={feature.air_conditioning} />
-            </li>
-            <li>
-              {' '}
-              bar
-              <Sign bool={feature.bar} />
-            </li>
-            <li>
-              {' '}
-              gym
-              <Sign bool={feature.gym} />
-            </li>
-            <li>
-              {' '}
-              tv
-              <Sign bool={feature.tv} />
-            </li>
+            {amenities.map((amenity) => (
+              <li key={amenity}>
+                {amenity}
+                <Sign bool={feature[amenity]} />
+              </li>
+            ))}
           </ul>
           <p className="description">{description}</p>
           <a className="link" href="/">
