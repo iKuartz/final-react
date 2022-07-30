@@ -21,7 +21,6 @@ function Login() {
     }
   }, [store, '', state]);
   return (
-<<<<<<< HEAD
       <section className='log-section'>
         <div className='log-bg'>
           <Logo />
@@ -38,36 +37,6 @@ function Login() {
           </form>
         </div>
       </section>
-=======
-    <section className="log-section">
-      <div className="log-bg">
-        <Logo />
-        <form
-          className="log-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            dispatch(getUserFromApi(user.username));
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Username"
-            value={user.username}
-            onChange={(e) => {
-              setUser({ username: e.target.value });
-            }}
-            required
-          />
-
-          <button disabled={user.username.length < 4} type="submit">Login</button>
-          <p>
-            Do not have an account?
-            <a href="/signup">Sign up</a>
-          </p>
-        </form>
-      </div>
-    </section>
->>>>>>> development
   );
 }
 
