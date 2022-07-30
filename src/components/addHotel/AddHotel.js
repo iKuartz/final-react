@@ -25,8 +25,8 @@ function AddHotel() {
     image: null,
   });
 
-  const attributes = [ "country", "state", "city", "neighborhood", "street", "complement" ];
-  const amenities = [ "pool", "bar", "air_conditioning", "tv", "gym" ];
+  const attributes = ['country', 'state', 'city', 'neighborhood', 'street', 'complement'];
+  const amenities = ['pool', 'bar', 'air_conditioning', 'tv', 'gym'];
 
   return (
     <section className="form-section">
@@ -45,8 +45,7 @@ function AddHotel() {
                   value={values[attribute]}
                   onChange={(e) => {
                     setValues({ ...values, [attribute]: e.target.value });
-                  }
-                  }
+                  }}
                 />
               </label>
             ))}
@@ -139,8 +138,7 @@ function AddHotel() {
                   checked={values[amenity]}
                   onChange={(e) => {
                     setValues({ ...values, [amenity]: e.target.checked });
-                  }
-                  }
+                  }}
                 />
                 {amenity}
               </label>

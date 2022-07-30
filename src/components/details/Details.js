@@ -29,7 +29,7 @@ function Details() {
       address, description, feature, image_path, name,
     } = data;
 
-    const amenities = ["pool", "air_conditioning", "bar", "gym", "tv"];
+    const amenities = ['pool', 'air_conditioning', 'bar', 'gym', 'tv'];
 
     return (
       <section className="details-section">
