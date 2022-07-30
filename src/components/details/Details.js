@@ -24,7 +24,7 @@ function Details() {
   }, []);
 
   if (state.data) {
-    const data = state.data[params.hotelId];
+    const data = state.data.find((x) => x.id === (1 + parseInt(params.hotelId, 10)));
     const {
       address, description, feature, image_path, name,
     } = data;
