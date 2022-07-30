@@ -30,27 +30,53 @@ function Details() {
     } = data;
 
     return (
-            <section className="details-section">
-          <div className="image-details">
-            <img src={ image_path || bg}/>
+      <section className="details-section">
+        <div className="image-details">
+          <img src={image_path || bg} />
+        </div>
+        <div className="options-details">
+          <div className="header-details">
+            <h2>{name}</h2>
+            <p>{`${address.city}, ${address.country}. zone: ${address.neighbourhood}. ${feature.room} rooms`}</p>
           </div>
-          <div className="options-details">
-            <div className="header-details">
-                <h2>{name}</h2>
-                <p>{`${address.city}, ${address.country}. zone: ${address.neighbourhood}. ${feature.room} rooms`}</p>
-            </div>
-            <ul>
-                <li> pool {<Sign bool={feature.pool}/>}</li>
-                <li> air conditioning {<Sign bool={feature.air_conditioning}/>}</li>
-                <li> bar {<Sign bool={feature.bar}/>}</li>
-                <li> gym {<Sign bool={feature.gym}/>}</li>
-                <li> tv {<Sign bool={feature.tv}/>}</li>
-            </ul>
-            <p className="description">{description}</p>
-             <a className="link" href="/">Discover more hotels <span>{'>'}</span> </a>
-             <button className="cta">Reserve <FontAwesomeIcon icon={faCircleChevronRight} className='fa-thin' /></button>
-          </div>
-        </section>
+          <ul>
+            <li>
+              {' '}
+              pool
+              <Sign bool={feature.pool} />
+            </li>
+            <li>
+              {' '}
+              air conditioning
+              <Sign bool={feature.air_conditioning} />
+            </li>
+            <li>
+              {' '}
+              bar
+              <Sign bool={feature.bar} />
+            </li>
+            <li>
+              {' '}
+              gym
+              <Sign bool={feature.gym} />
+            </li>
+            <li>
+              {' '}
+              tv
+              <Sign bool={feature.tv} />
+            </li>
+          </ul>
+          <p className="description">{description}</p>
+          <a className="link" href="/">
+            Discover more hotels
+            <span>{'>'}</span>
+          </a>
+          <button className="cta">
+            Reserve
+            <FontAwesomeIcon icon={faCircleChevronRight} className="fa-thin" />
+          </button>
+        </div>
+      </section>
     );
   }
   return (

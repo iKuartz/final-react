@@ -23,11 +23,11 @@ function App() {
     <BrowserRouter>
       <Sidebar />
       <Routes>
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<Main />} />
-        <Route path='/hotel/:hotelId' element={<Details />} />
-        <Route path='/addHotel' element={<AddHotel />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/hotel/:hotelId" element={<Details />} />
+        <Route path="/addHotel" element={<AddHotel />} />
         <Route path="/add-reservation" element={<AddReservation />} />
         <Route path="/reservations" element={<Reservations />} />
       </Routes>

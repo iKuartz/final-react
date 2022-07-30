@@ -30,25 +30,41 @@ function SignUp() {
   const auth = user.username === user.confirmed && user.username.length >= 4;
 
   return (
-        <section className="signup-section">
-            <div className="signup-bg">
-                <Logo/>
-                 <form className='log-form' onSubmit={(e) => {
-                   e.preventDefault();
-                   dispatch(postUserToApi(user.username));
-                 }}>
-                    <input type="text" placeholder='Username' value ={user.username} onChange={(e) => {
-                      setUser({ ...user, username: e.target.value });
-                    }}/>
-                    <input type="text" placeholder='Confirm username' value ={user.confirmed} onChange={(e) => {
-                      setUser({ ...user, confirmed: e.target.value });
-                    }}/>
-                    <button type="submit" disabled={!auth}>Sign up</button>
-                    {check && <Error message={message}/>}
-                 <p>Already have an account? <a href="/login">Sign in</a> </p>
-                 </form>
-            </div>
-        </section>
+    <section className="signup-section">
+      <div className="signup-bg">
+        <Logo />
+        <form
+          className="log-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(postUserToApi(user.username));
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Username"
+            value={user.username}
+            onChange={(e) => {
+              setUser({ ...user, username: e.target.value });
+            }}
+          />
+          <input
+            type="text"
+            placeholder="Confirm username"
+            value={user.confirmed}
+            onChange={(e) => {
+              setUser({ ...user, confirmed: e.target.value });
+            }}
+          />
+          <button type="submit" disabled={!auth}>Sign up</button>
+          {check && <Error message={message} />}
+          <p>
+            Already have an account?
+            <a href="/login">Sign in</a>
+          </p>
+        </form>
+      </div>
+    </section>
   );
 }
 

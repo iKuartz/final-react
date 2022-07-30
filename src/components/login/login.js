@@ -21,22 +21,34 @@ function Login() {
     }
   }, [store, '', state]);
   return (
-      <section className='log-section'>
-        <div className='log-bg'>
-          <Logo />
-          <form className='log-form' onSubmit={(e) => {
+    <section className="log-section">
+      <div className="log-bg">
+        <Logo />
+        <form
+          className="log-form"
+          onSubmit={(e) => {
             e.preventDefault();
             dispatch(getUserFromApi(user.username));
-          }}>
-            <input type="text" placeholder='Username' value={user.username} onChange={(e) => {
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Username"
+            value={user.username}
+            onChange={(e) => {
               setUser({ username: e.target.value });
-            }} required />
+            }}
+            required
+          />
 
-            <button disabled={user.username.length < 4} type='submit'>Login</button>
-            <p>Don't have an accoount? <a href='/signup'>Sign up</a> </p>
-          </form>
-        </div>
-      </section>
+          <button disabled={user.username.length < 4} type="submit">Login</button>
+          <p>
+            Don't have an accoount?
+            <a href="/signup">Sign up</a>
+          </p>
+        </form>
+      </div>
+    </section>
   );
 }
 
