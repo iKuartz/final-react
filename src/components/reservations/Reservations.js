@@ -27,7 +27,6 @@ function Reservations() {
 
   if (state.reservations && hotelsData.data) {
     hotels = hotelsData.data;
-    console.log('HOTELSSSSS', hotels);
 
     return (
       <div className="main__container">
