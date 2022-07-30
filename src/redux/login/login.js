@@ -15,7 +15,7 @@ export const setUser = (payload) => ({
 });
 
 export const postUserToApi = (name) => async (dispatch) => {
-  fetch('https://rails-hotels-api.herokuapp.com/v1/register', {
+  fetch('http://rails-hotels-api.herokuapp.com/v1/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,8 +40,7 @@ export const getSessionFromLocalStorage = () => (dispatch) => {
 };
 
 export const getUserFromApi = (name) => async (dispatch) => {
-  fetch(`https://rails-hotels-api.herokuapp.com/v1/login/${name}`)
-
+  fetch(`http://rails-hotels-api.herokuapp.com/v1/login/${name}`)
     .then((response) => response.json())
     .then((data) => {
       setSession({ token: data.token, user: name });
