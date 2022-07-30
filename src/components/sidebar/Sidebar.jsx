@@ -1,13 +1,13 @@
 import './Sidebar.scss';
-import Logo from '../logo/logo';
-import { setSession } from '../../storage/session';
 import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
-  FaPinterest
+  FaPinterest,
 } from 'react-icons/fa';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import Logo from '../logo/logo';
+import { setSession } from '../../storage/session';
 
 const Sidebar = () => {
   const toggleMenu = () => {
@@ -20,31 +20,31 @@ const Sidebar = () => {
   if (location.pathname !== '/login' && location.pathname !== '/signup') {
     return (
       <nav>
-        <div className='sidebar__container'>
+        <div className="sidebar__container">
           <button
-            className='hide'
-            onClick={e => {
+            className="hide"
+            onClick={(e) => {
               e.target.parentNode.classList.toggle('hidden');
             }}
           >
             Menu
           </button>
-          <div className='sidebar__logo-container'>
-            <Link to='/'>
+          <div className="sidebar__logo-container">
+            <Link to="/">
               <Logo />
             </Link>
           </div>
-          <ul className='sidebar__items-container'>
-            <li className='sidebar__menu-item'>Add Hotel</li>
-            <li className='sidebar__menu-item'>Delete Hotel</li>
-            <li className='sidebar__menu-item'>
-              <Link to='/add-reservation'>Add Reservation</Link>
+          <ul className="sidebar__items-container">
+            <li className="sidebar__menu-item">Add Hotel</li>
+            <li className="sidebar__menu-item">Delete Hotel</li>
+            <li className="sidebar__menu-item">
+              <Link to="/add-reservation">Add Reservation</Link>
             </li>
-            <li className='sidebar__menu-item'>
-              <Link to='/reservations'>My Reservations</Link>
+            <li className="sidebar__menu-item">
+              <Link to="/reservations">My Reservations</Link>
             </li>
             <li
-              className='sidebar__menu-item'
+              className="sidebar__menu-item"
               onClick={() => {
                 localStorage.removeItem('session');
                 navigate('/login');
@@ -53,21 +53,21 @@ const Sidebar = () => {
               Logout
             </li>
           </ul>
-          <div className='sidebar__social-container'>
-            <div className='sidebar__social-item'>
+          <div className="sidebar__social-container">
+            <div className="sidebar__social-item">
               <FaFacebook size={20} />
             </div>
-            <div className='sidebar__social-item'>
+            <div className="sidebar__social-item">
               <FaTwitter size={20} />
             </div>
-            <div className='sidebar__social-item'>
+            <div className="sidebar__social-item">
               <FaInstagram size={20} />
             </div>
-            <div className='sidebar__social-item'>
+            <div className="sidebar__social-item">
               <FaPinterest size={20} />
             </div>
           </div>
-          <div className='sidebar__footer'>
+          <div className="sidebar__footer">
             <p>Copyright © 2022</p>
           </div>
         </div>
