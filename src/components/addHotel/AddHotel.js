@@ -161,7 +161,6 @@ function AddHotel() {
         }}>submit</button>
 
       </form>
-
     </section>
   );
 }
