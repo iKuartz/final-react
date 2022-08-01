@@ -10,12 +10,9 @@
 
 ![Screenshot of our APP](images/4.png)
 
-![ERD diagram of our database](images/ERD_diagram.png)
-
-
 ## Deployment
 
-You can find the app live [here](https://cryptic-lake-58741.herokuapp.com/)
+You can find the front-end app live [here](https://cryptic-lake-58741.herokuapp.com/)
 
 ## Front-end repository
 
@@ -34,11 +31,7 @@ You can find the deployed back-end API [here live](https://rails-hotels-api.hero
 - **React 18.2**
 - **Redux Toolkit 1.8.1**
 - **React-Redux 8.0.1**
-- **Ruby 3.1.2**
-- **Rails 7**
-- **PostgreSQL**
 - **Visual Studio Code**
-
 
 ## Getting Started
 
@@ -65,15 +58,11 @@ or
 In the project directory, you can run:
 
 ```bash
-> bundle install
-> rails s
-```
-then open another terminal and type
-```bash
 > yarn start
 or 
 > npm start`
 ```
+
 ## Authors
 
 👤 **Ivan Silva**
