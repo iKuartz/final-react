@@ -19,7 +19,15 @@ const config2 = {
   },
 };
 
+function check_token() {
+  if (!config2.token) {
+    session.token = getSession().token;
+    config2.headers.token = session.token;
+  }
+}
+
 export const postHotelToApi = (obj) => {
+  check_token();
   axios.post('https://rails-hotels-api.herokuapp.com/v1/hotels', obj, config2);
 };
 
@@ -29,6 +37,7 @@ export const getHotels = (payload) => ({
 });
 
 export const getHotelsFromApi = (amount, index, token) => (dispatch) => {
+  check_token();
   axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, {
     headers: {
       'Content-type': 'application/json',
