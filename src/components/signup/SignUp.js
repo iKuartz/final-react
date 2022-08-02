@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Error from '../extras/error/error';
 import Logo from '../logo/logo';
 import { postUserToApi } from '../../redux/login/login';
@@ -58,7 +58,7 @@ function SignUp() {
           {check && <Error message={message} />}
           <p>
             Already have an account?
-            <a href="/login">Sign in</a>
+            <Link to="/login">Sign In</Link>
           </p>
         </form>
       </div>
