@@ -5,15 +5,17 @@ import {
   FaInstagram,
   FaPinterest,
 } from 'react-icons/fa';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation, Link } from 'react-router-dom';
 import Logo from '../logo/logo';
+import { logout } from '../../redux/login/login';
 
 const Sidebar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   const handleClick = () => {
-    localStorage.removeItem('session');
-    navigate('/login');
+    dispatch(logout());
   };
 
   if (location.pathname !== '/login' && location.pathname !== '/signup') {

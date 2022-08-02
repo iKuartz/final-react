@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postHotelToApi } from '../../redux/hotels/hotels';
 import './addHotel.scss';
 
 function AddHotel() {
   const navigate = useNavigate();
+
+  const loginState = useSelector((state) => state.login);
 
   const [values, setValues] = useState({
     room: 0,
@@ -27,6 +30,12 @@ function AddHotel() {
 
   const attributes = ['country', 'state', 'city', 'neighbourhood', 'street', 'complement'];
   const amenities = ['pool', 'bar', 'air_conditioning', 'tv', 'gym'];
+
+  useEffect(() => {
+    if (loginState.token === null) {
+      navigate('/login');
+    }
+  }, [loginState]);
 
   return (
     <section className="form-section">
@@ -154,7 +163,7 @@ function AddHotel() {
             for (const prop in values) {
               formData.append(`hotel[${prop}]`, values[prop]);
             }
-            postHotelToApi(formData);
+            postHotelToApi(formData, loginState.token);
             navigate('/');
           }}
         >

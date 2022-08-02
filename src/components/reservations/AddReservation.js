@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getHotelsFromApi } from '../../redux/hotels/hotels';
 import { newReservations } from '../../redux/reservations/reservations';
-import { getSession } from '../../storage/session';
 import './reservations.scss';
 
 const AddReservation = () => {
@@ -13,20 +12,31 @@ const AddReservation = () => {
   const [rooms, setRooms] = useState('1');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const session = getSession();
+  const loginState = useSelector((store) => store.login);
   const navigate = useNavigate();
   let hotelList = [];
 
   useEffect(() => {
-    if (session.token === null) {
+    if (loginState.token === null) {
       navigate('/login');
+      return;
     }
-    dispatch(getHotelsFromApi(5, 0, session.token));
-  }, [dispatch, navigate]);
+    dispatch(getHotelsFromApi(20, 0, loginState.token));
+  }, [loginState]);
+
+  useEffect(() => {
+    if (state.data) {
+      hotelList = state.data.map((hotel) => (
+        <option key={hotel.id} value={hotel.id}>
+          {hotel.name}
+        </option>
+      ));
+    }
+  }, [state]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(newReservations(rooms, hotelId, startDate, endDate)).then(() => {
+    dispatch(newReservations(rooms, hotelId, startDate, endDate, loginState.token)).then(() => {
       navigate('/reservations');
     });
   };

@@ -1,7 +1,6 @@
-import { setSession, getSession } from '../../storage/session';
-
 const SET_LOGIN = 'login/SET_LOGIN';
 const SET_USER = 'login/SET_USER';
+const LOGOUT_USER = 'logout';
 
 const initialState = {
   user: null,
@@ -13,6 +12,19 @@ export const setUser = (payload) => ({
   type: SET_USER,
   payload,
 });
+
+const setSession = (session) => {
+  const str = JSON.stringify(session);
+  localStorage.setItem('session', str);
+};
+
+const getSession = () => {
+  const log = localStorage.getItem('session');
+  if (log) {
+    return JSON.parse(log);
+  }
+  return { token: null };
+};
 
 export const postUserToApi = (name) => async (dispatch) => {
   fetch('https://rails-hotels-api.herokuapp.com/v1/register', {
@@ -44,12 +56,17 @@ export const getUserFromApi = (name) => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       setSession({ token: data.token, user: name });
+      console.log(data);
       dispatch(setLogin({ token: data.token, user: name }));
     })
     .catch((error) => dispatch(setLogin({ message: error.message })));
 };
 
-const reducer = (state = initialState, action) => {
+export const logout = () => ({
+  type: LOGOUT_USER,
+});
+
+const login = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOGIN: {
       return { ...action.payload };
@@ -57,8 +74,13 @@ const reducer = (state = initialState, action) => {
     case SET_USER: {
       return { ...action.payload };
     }
+    case LOGOUT_USER: {
+      localStorage.removeItem('session');
+      console.log('Initial State', initialState);
+      return { ...initialState };
+    }
     default:
       return state;
   }
 };
-export default reducer;
+export default login;

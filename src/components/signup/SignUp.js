@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Error from '../extras/error/error';
-import { getSession } from '../../storage/session';
 import Logo from '../logo/logo';
 import { postUserToApi } from '../../redux/login/login';
 import './signup.scss';
@@ -15,16 +14,15 @@ function SignUp() {
     username: '',
     confirmed: '',
   });
-  const logged = getSession('session');
-  const state = useSelector((store) => store.login);
+  const loginState = useSelector((store) => store.login);
 
   useEffect(() => {
-    if (logged.token !== null) {
+    if (loginState.token !== null) {
       navigate('/');
-    } else if (state.message === 'User Created Successfully') {
+    } else if (loginState.message === 'User Created Successfully') {
       navigate('/login');
     }
-  }, [state]);
+  }, [loginState]);
 
   const check = user.username !== user.confirmed;
   const auth = user.username === user.confirmed && user.username.length >= 4;

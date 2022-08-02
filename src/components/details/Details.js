@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { getSession } from '../../storage/session';
 import { getHotelsFromApi } from '../../redux/hotels/hotels';
 import bg from '../../assets/images/bg-su.jpg';
 import Sign from '../extras/sign/sign';
@@ -12,15 +11,15 @@ import './details.scss';
 function Details() {
   const params = useParams();
   const state = useSelector((store) => store.hotels);
-  const session = getSession();
+  const loginState = useSelector((store) => store.login);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (session.token === null) {
+    if (loginState.token === null) {
       navigate('/login');
     }
-    dispatch(getHotelsFromApi(100, 0, session.token));
+    dispatch(getHotelsFromApi(100, 0, loginState.token));
   }, []);
 
   if (state.data) {
@@ -50,10 +49,10 @@ function Details() {
             ))}
           </ul>
           <p className="description">{description}</p>
-          <a className="link" href="/">
+          <Link className="link" to="/hotels">
             Discover more hotels
             <span>{'>'}</span>
-          </a>
+          </Link>
           <button type="button" className="cta">
             Reserve
             <FontAwesomeIcon icon={faCircleChevronRight} className="fa-thin" />
