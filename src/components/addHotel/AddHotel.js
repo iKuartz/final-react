@@ -25,7 +25,7 @@ function AddHotel() {
     image: null,
   });
 
-  const attributes = ['country', 'state', 'city', 'neighborhood', 'street', 'complement'];
+  const attributes = ['country', 'state', 'city', 'neighbourhood', 'street', 'complement'];
   const amenities = ['pool', 'bar', 'air_conditioning', 'tv', 'gym'];
 
   return (

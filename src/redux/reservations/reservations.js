@@ -15,8 +15,17 @@ const config = {
   },
 };
 
+function check_token() {
+  if (!config.token) {
+    session.token = getSession().token;
+    config.headers.token = session.token;
+  }
+}
+
 // action creatorS
 export const getReservations = () => async (dispatch) => {
+  check_token();
+
   const response = await axios
     .get(`${URL}/reservation`, config)
     .then((res) => res.data);
@@ -27,6 +36,7 @@ export const getReservations = () => async (dispatch) => {
 };
 
 export const newReservations = (rooms, hotelId, startDate, endDate) => async (dispatch) => {
+  check_token();
   const data = {
     reservation: {
       reserved_rooms: rooms,
@@ -47,6 +57,7 @@ export const newReservations = (rooms, hotelId, startDate, endDate) => async (di
 };
 
 export const delReservations = (id) => async (dispatch) => {
+  check_token();
   const response = await axios
     .delete(`${URL}/reservation/${id}`, config)
     .then((res) => res.data);
