@@ -1,10 +1,7 @@
 import axios from 'axios';
-import { getSession } from '../../storage/session';
 
 const GET_HOTELS = 'hotels/GET_HOTELS';
 const POST_HOTEL = 'hotels/POST_HOTEL';
-
-const session = getSession();
 const initialState = [];
 
 export const postHotel = (payload) => ({
@@ -12,23 +9,14 @@ export const postHotel = (payload) => ({
   payload,
 });
 
-const config2 = {
-  headers: {
-    'content-type': 'multipart/form-data',
-    token: session.token,
-  },
-};
-
-function check_token() {
-  if (!config2.token) {
-    session.token = getSession().token;
-    config2.headers.token = session.token;
-  }
-}
-
-export const postHotelToApi = (obj) => {
-  check_token();
-  axios.post('https://rails-hotels-api.herokuapp.com/v1/hotels', obj, config2);
+export const postHotelToApi = (obj, token) => {
+  axios.post('https://rails-hotels-api.herokuapp.com/v1/hotels', obj,
+    {
+      headers: {
+        'content-type': 'multipart/form-data',
+        token,
+      },
+    });
 };
 
 export const getHotels = (payload) => ({
@@ -37,7 +25,6 @@ export const getHotels = (payload) => ({
 });
 
 export const getHotelsFromApi = (amount, index, token) => (dispatch) => {
-  check_token();
   axios.get(`https://rails-hotels-api.herokuapp.com/v1/hotels?limit=${amount}&offset=${index}`, {
     headers: {
       'Content-type': 'application/json',
@@ -47,7 +34,7 @@ export const getHotelsFromApi = (amount, index, token) => (dispatch) => {
     .then((data) => dispatch(getHotels(data.data)));
 };
 
-const reducer = (state = initialState, action) => {
+const hotels = (state = initialState, action) => {
   switch (action.type) {
     case GET_HOTELS: {
       return action.payload;
@@ -58,4 +45,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default hotels;

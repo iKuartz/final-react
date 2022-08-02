@@ -6,24 +6,24 @@ import {
   delReservations,
   getReservations,
 } from '../../redux/reservations/reservations';
-import { getSession } from '../../storage/session';
 
 function Reservations() {
   const dispatch = useDispatch();
-  const session = getSession();
   const navigate = useNavigate();
   const state = useSelector((store) => store.reservations, shallowEqual);
   const hotelsData = useSelector((store) => store.hotels);
+  const loginState = useSelector((store) => store.login);
   const { reservations } = state;
   let hotels = [];
 
   useEffect(() => {
-    if (session.token === null) {
+    if (loginState.token === null) {
       navigate('/login');
+      return;
     }
-    dispatch(getReservations());
-    dispatch(getHotelsFromApi(10, 0, session.token));
-  }, []);
+    dispatch(getReservations(loginState.token));
+    dispatch(getHotelsFromApi(10, 0, loginState.token));
+  }, [loginState]);
 
   if (state.reservations && hotelsData.data) {
     hotels = hotelsData.data;
@@ -54,7 +54,7 @@ function Reservations() {
                     type="button"
                     className="btn btn-danger"
                     onClick={() => {
-                      dispatch(delReservations(reservation.id));
+                      dispatch(delReservations(reservation.id, loginState.token));
                       document
                         .getElementById(`reservation-${reservation.id}`)
                         .remove();

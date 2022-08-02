@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getSession } from '../../storage/session';
 
 // action types
 const GET_RESERVATIONS = 'GET_RESERVATIONS';
@@ -7,27 +6,16 @@ const NEW_RESERVATION = 'NEW_RESERVATION';
 const DEL_RESERVATION = 'DEL_RESERVATION';
 
 const URL = 'https://rails-hotels-api.herokuapp.com/v1';
-const session = getSession();
-const config = {
-  headers: {
-    'Content-type': 'application/json',
-    token: session.token,
-  },
-};
-
-function check_token() {
-  if (!config.token) {
-    session.token = getSession().token;
-    config.headers.token = session.token;
-  }
-}
 
 // action creatorS
-export const getReservations = () => async (dispatch) => {
-  check_token();
-
+export const getReservations = (token) => async (dispatch) => {
   const response = await axios
-    .get(`${URL}/reservation`, config)
+    .get(`${URL}/reservation`, {
+      headers: {
+        'Content-type': 'application/json',
+        token,
+      },
+    })
     .then((res) => res.data);
   dispatch({
     type: GET_RESERVATIONS,
@@ -35,8 +23,7 @@ export const getReservations = () => async (dispatch) => {
   });
 };
 
-export const newReservations = (rooms, hotelId, startDate, endDate) => async (dispatch) => {
-  check_token();
+export const newReservations = (rooms, hotelId, startDate, endDate, token) => async (dispatch) => {
   const data = {
     reservation: {
       reserved_rooms: rooms,
@@ -47,7 +34,12 @@ export const newReservations = (rooms, hotelId, startDate, endDate) => async (di
   };
 
   const response = await axios
-    .post(`${URL}/reservation`, data, config)
+    .post(`${URL}/reservation`, data, {
+      headers: {
+        'Content-type': 'application/json',
+        token,
+      },
+    })
     .then((res) => res.data);
 
   dispatch({
@@ -56,10 +48,14 @@ export const newReservations = (rooms, hotelId, startDate, endDate) => async (di
   });
 };
 
-export const delReservations = (id) => async (dispatch) => {
-  check_token();
+export const delReservations = (id, token) => async (dispatch) => {
   const response = await axios
-    .delete(`${URL}/reservation/${id}`, config)
+    .delete(`${URL}/reservation/${id}`, {
+      headers: {
+        'Content-type': 'application/json',
+        token,
+      },
+    })
     .then((res) => res.data);
 
   dispatch({
@@ -69,7 +65,7 @@ export const delReservations = (id) => async (dispatch) => {
 };
 
 // reducer
-export default function reservationsReducer(state = [], action) {
+export default function reservations(state = [], action) {
   switch (action.type) {
     default:
       return state;

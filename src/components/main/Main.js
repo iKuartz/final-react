@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Main.scss';
 import { getHotelsFromApi } from '../../redux/hotels/hotels';
-import { getSession } from '../../storage/session';
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -33,7 +32,7 @@ function PrevArrow(props) {
 
 const Main = () => {
   const dispatch = useDispatch();
-  const session = getSession();
+  const loginState = useSelector((store) => store.login);
   const navigate = useNavigate();
   const state = useSelector((store) => store.hotels);
 
@@ -75,11 +74,12 @@ const Main = () => {
   };
 
   useEffect(() => {
-    if (session.token === null) {
+    if (loginState.token === null) {
       navigate('/login');
+      return;
     }
-    dispatch(getHotelsFromApi(100, 0, session.token));
-  }, []);
+    dispatch(getHotelsFromApi(100, 0, loginState.token));
+  }, [loginState]);
 
   if (state.data) {
     const hotels = state.data;
