@@ -58,7 +58,7 @@ export const getUserFromApi = (name) => async (dispatch) => {
       setSession({ token: data.token, user: name });
       dispatch(setLogin({ token: data.token, user: name }));
     })
-    .catch((error) => dispatch(setLogin({ message: error.message })));
+    .catch((error) => dispatch(setLogin({ message: error.message, token: null })));
 };
 
 export const logout = () => ({
