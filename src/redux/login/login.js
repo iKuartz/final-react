@@ -35,8 +35,8 @@ export const postUserToApi = (name) => async (dispatch) => {
     body: JSON.stringify({ user: { name } }),
   })
     .then((response) => response.json())
-    .then((data) => dispatch(setUser({ message: data.message })))
-    .catch((error) => dispatch(setUser({ message: error.message })));
+    .then((data) => dispatch(setUser({ message: data.message, token: null })))
+    .catch((error) => dispatch(setUser({ message: error.message, token: null })));
 };
 
 export const setLogin = (payload) => ({
@@ -56,7 +56,6 @@ export const getUserFromApi = (name) => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       setSession({ token: data.token, user: name });
-      console.log(data);
       dispatch(setLogin({ token: data.token, user: name }));
     })
     .catch((error) => dispatch(setLogin({ message: error.message })));
@@ -76,7 +75,6 @@ const login = (state = initialState, action) => {
     }
     case LOGOUT_USER: {
       localStorage.removeItem('session');
-      console.log('Initial State', initialState);
       return { ...initialState };
     }
     default:

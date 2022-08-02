@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getUserFromApi } from '../../redux/login/login';
 import Logo from '../logo/logo';
 import './login.scss';
@@ -42,7 +42,7 @@ function Login() {
           <button disabled={user.username.length < 4} type="submit">Login</button>
           <p>
             Don&apos;t have an accoount?
-            <a href="/signup">Sign up</a>
+            <Link to="/signup">Sign up</Link>
           </p>
         </form>
       </div>
